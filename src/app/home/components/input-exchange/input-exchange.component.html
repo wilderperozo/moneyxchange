@@ -1,9 +1,11 @@
 <div class="wrapper">
   <input type="text"
          class="form-control"
-         [(ngModel)]="value"
+         [ngModel]="value"
+         (ngModelChange)="writeValue($event)"
          (keypress)="validateInputFormat($event)"
+         [disabled]="disabled"
          #inputExchange
          name="inputExchange">
-  <span>USD</span>
+  <span>{{symbol}}</span>
 </div>

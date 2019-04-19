@@ -4,40 +4,48 @@
 <section class="container">
 
   <div class="row card">
+    <form [formGroup]="presenter.form" (ngSubmit)="convert()" name="form">
 
-    <div class="row">
-      <div class="col-6 text-center">
-        Amount
+      <div class="row">
+        <div class="col-6 text-center">
+          Amount
+        </div>
+        <div class="col-6 text-center">
+          Converted to
+        </div>
       </div>
-      <div class="col-6 text-center">
-        Converted to
+      <div class="row">
+        <div class="col-6">
+          <app-input-exchange
+            name="moneyToExchange"
+            [formControlName]="'moneyToExchange'"
+          ></app-input-exchange>
+        </div>
+        <div class="col-6">
+          <app-input-exchange
+            name="moneyExchanged"
+            [formControlName]="'moneyExchanged'"
+            [disabled]="presenter.moneyExchanged.disabled"
+            [symbol]="'EUR'"
+          ></app-input-exchange>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <app-input-exchange></app-input-exchange>
-      </div>
-      <div class="col-6">
-        <app-input-exchange></app-input-exchange>
-      </div>
-    </div>
 
-    <div class="row mt-5">
+      <div class="row mt-5">
 
-      <div class="col-6 text-exchange text-center">
-        <h3>
-          1 USD = 0.89005 EUR
-        </h3>
+        <div class="col-6 text-exchange text-center">
+          <h3>
+            1 USD = 0.89005 EUR
+          </h3>
+        </div>
+
+        <div class="col-6 text-right">
+          <button class="btn btn-send" type="submit">
+            Done
+          </button>
+        </div>
       </div>
-
-      <div class="col-6 text-right">
-        <button class="btn btn-send">
-          CONVERT
-        </button>
-      </div>
-    </div>
-
-
+    </form>
   </div>
 
 </section>

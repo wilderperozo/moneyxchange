@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {FooterComponent} from '../shared/components/footer/footer.component';
 import {HeaderComponent} from '../shared/components/header/header.component';
 import { InputExchangeComponent } from './components/input-exchange/input-exchange.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -25,6 +25,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class HomeModule {
