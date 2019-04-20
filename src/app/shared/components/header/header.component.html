@@ -3,18 +3,28 @@
     <img [src]="logo" alt="">
   </div>
 
-  <div class="menu-option row">
-    <div class="menu-item col-3">
-      Home
-    </div>
-    <div class="menu-item col-3">
-      Send money
-    </div>
-    <div class="menu-item col-3">
-      About us
-    </div>
-    <div class="menu-item col-3">
-      Sign up
+  <div class="menu-option container-fluid" [ngClass]="{'collapse-menu': !collapse}">
+
+    <div class="row">
+      <div class="col-2 d-flex d-sm-none">
+        <div class="btn-responsive" (click)="expandAndCollapse()">
+          <li></li>
+          <li></li>
+          <li></li>
+        </div>
+      </div>
+      <div class="menu-item offset-sm-2 col-sm-2 col-12 text-center">
+        Home
+      </div>
+      <div class="menu-item col-sm-2 col-12 text-center">
+        Send money
+      </div>
+      <div class="menu-item col-sm-2 col-12 text-center">
+        About us
+      </div>
+      <div class="menu-item col-sm-2 col-12 text-center">
+        Sign up
+      </div>
     </div>
   </div>
 

@@ -1,10 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ScheduleService} from './schedule.service';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
-export class ServicesModule { }
+export class ServicesModule {
+
+  public static forRoot() {
+    return {
+      ngModule: ServicesModule,
+      providers: [ScheduleService]
+    };
+  }
+}

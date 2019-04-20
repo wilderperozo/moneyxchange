@@ -7,12 +7,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  logo  = './assets/img/logo.png';
+  logo = './assets/img/logo.jpg';
+  collapse = true;
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  expandAndCollapse() {
+    this.collapse = !this.collapse;
   }
 
 }

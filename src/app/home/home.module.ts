@@ -2,12 +2,14 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HomeComponent} from './home.component';
 import {RouterModule, Routes} from '@angular/router';
-import {FooterComponent} from '../shared/components/footer/footer.component';
-import {HeaderComponent} from '../shared/components/header/header.component';
 import {InputExchangeComponent} from './components/input-exchange/input-exchange.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ExchangeService} from './services/exchange.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ServicesModule} from '../shared/services/services.module';
+import {CommonsComponentsModule} from '../shared/components/commonsComponents.module';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {
@@ -19,8 +21,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-    FooterComponent,
-    HeaderComponent,
     InputExchangeComponent
   ],
   imports: [
@@ -29,6 +29,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CommonsComponentsModule,
+    ServicesModule,
+    ToastrModule
   ],
   providers: [
     ExchangeService
