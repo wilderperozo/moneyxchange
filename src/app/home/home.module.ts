@@ -4,8 +4,10 @@ import {HomeComponent} from './home.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FooterComponent} from '../shared/components/footer/footer.component';
 import {HeaderComponent} from '../shared/components/header/header.component';
-import { InputExchangeComponent } from './components/input-exchange/input-exchange.component';
+import {InputExchangeComponent} from './components/input-exchange/input-exchange.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ExchangeService} from './services/exchange.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -26,6 +28,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    ExchangeService
   ]
 })
 export class HomeModule {

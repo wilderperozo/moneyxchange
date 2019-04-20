@@ -6,12 +6,12 @@
   <div class="row card">
     <form [formGroup]="presenter.form" (ngSubmit)="convert()" name="form">
 
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-6 text-center">
-          Amount
+          <h6>Amount</h6>
         </div>
         <div class="col-6 text-center">
-          Converted to
+          <h6>Converted to</h6>
         </div>
       </div>
       <div class="row">
@@ -19,6 +19,7 @@
           <app-input-exchange
             name="moneyToExchange"
             [formControlName]="'moneyToExchange'"
+            [symbol]="exchanges[0]"
           ></app-input-exchange>
         </div>
         <div class="col-6">
@@ -26,7 +27,7 @@
             name="moneyExchanged"
             [formControlName]="'moneyExchanged'"
             [disabled]="presenter.moneyExchanged.disabled"
-            [symbol]="'EUR'"
+            [symbol]="exchanges[1]"
           ></app-input-exchange>
         </div>
       </div>
@@ -35,7 +36,7 @@
 
         <div class="col-6 text-exchange text-center">
           <h3>
-            1 USD = 0.89005 EUR
+            1 {{exchanges[0]}} = {{exchangeBodyResponse.exchangeInvested?.EUR.toFixed(4)}} {{exchanges[1]}}
           </h3>
         </div>
 

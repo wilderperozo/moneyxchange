@@ -36,9 +36,10 @@ export class InputExchangeComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  writeValue(value: string): void {
-    if (value.charAt(value.length - 1) !== '.' && !isNaN(parseFloat(value))) {
-      const valueFormated = parseFloat(value.replace(/,/g, ''))
+  writeValue(value: string | number): void {
+    const innerValue = value.toString();
+    if (innerValue.charAt(innerValue.length - 1) !== '.' && !isNaN(parseFloat(innerValue))) {
+      const valueFormated = parseFloat(innerValue.replace(/,/g, ''))
         .toLocaleString('en-US', {style: 'decimal', maximumFractionDigits: 4, minimumFractionDigits: 0});
       this.inputElement.nativeElement._value = valueFormated;
       this.value = valueFormated;

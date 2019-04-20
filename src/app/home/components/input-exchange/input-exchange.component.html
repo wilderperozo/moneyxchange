@@ -5,6 +5,7 @@
          (ngModelChange)="writeValue($event)"
          (keypress)="validateInputFormat($event)"
          [disabled]="disabled"
+         autocomplete="off"
          #inputExchange
          name="inputExchange">
   <span>{{symbol}}</span>

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HomePresenter} from './presenter/home.presenter';
+import {ExchangeService} from './services/exchange.service';
+import {Exchange} from './models/exchange';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +11,27 @@ import {HomePresenter} from './presenter/home.presenter';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private presenter: HomePresenter) {
+  exchangeBodyResponse = {} as Exchange;
+  exchanges = ['USD', 'EUR'];
+
+  constructor(
+    private exchangeService: ExchangeService,
+    private presenter: HomePresenter) {
   }
 
   ngOnInit() {
+    this.exchangeService.getExchange(this.exchanges).subscribe(response => {
+      const {EUR, USD} = response.rates;
+      response.exchangeInvested = {
+        EUR: EUR / USD,
+        USD: 1
+      };
+      this.exchangeBodyResponse = response;
+    });
   }
 
   convert() {
-    console.log('convert ', this.presenter.moneyToExchange);
+    const valueInRaw = this.presenter.moneyToExchange.value.toString().replace(/,/g, '');
+    this.presenter.moneyExchanged.setValue(parseFloat(valueInRaw) * this.exchangeBodyResponse.exchangeInvested.EUR);
   }
 }
