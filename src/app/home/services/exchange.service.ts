@@ -22,4 +22,12 @@ export class ExchangeService {
     ));
   }
 
+  public investingRates(exchangeObj) {
+    const {EUR, USD} = exchangeObj.rates;
+    return {
+      EUR: EUR / USD,
+      USD: 1
+    };
+  }
+
 }

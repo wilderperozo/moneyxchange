@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HomePresenter} from './presenter/home.presenter';
 import {ExchangeService} from './services/exchange.service';
 import {Exchange} from './models/exchange';
-import {ScheduleService} from '../shared/services/schedule.service';
+import {ScheduleService} from '@services/schedule.service';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -32,18 +32,20 @@ export class HomeComponent implements OnInit {
         {
           timeOut: 5000, positionClass: 'toast-bottom-right'
         });
-      // this.getExchange();
+      this.getExchange();
     });
   }
 
   getExchange() {
     this.exchangeService.getExchange(this.exchanges).subscribe(response => {
-      const {EUR, USD} = response.rates;
-      response.exchangeInvested = {
-        EUR: EUR / USD,
-        USD: 1
-      };
       this.exchangeBodyResponse = response;
+      this.exchangeBodyResponse.exchangeInvested = this.exchangeService.investingRates(response);
+    }, err => {
+      this.toastr.error(`Error getting foreign exchange`,
+        'Error',
+        {
+          timeOut: 5000, positionClass: 'toast-bottom-right'
+        });
     });
   }
 
