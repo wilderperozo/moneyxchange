@@ -16,7 +16,7 @@ export class InputExchangeComponent implements ControlValueAccessor {
   @Input() disabled = false;
   @Input() symbol = 'USD';
   @ViewChild('inputExchange') inputElement;
-  private value = '';
+  value = '';
   onChange = (value: string) => {
   };
   onTouched = () => {
@@ -25,26 +25,27 @@ export class InputExchangeComponent implements ControlValueAccessor {
   validateInputFormat($event: KeyboardEvent) {
     if (!new RegExp(/[0-9.,]+/).test($event.key)) {
       $event.preventDefault();
+      return false;
     }
+    return true;
   }
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: () => void): void {
+  registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
-  writeValue(value: string | number): void {
+  writeValue(value: string): void {
     const innerValue = value.toString();
     if (innerValue.charAt(innerValue.length - 1) !== '.' && !isNaN(parseFloat(innerValue))) {
-      const valueFormated = parseFloat(innerValue.replace(/,/g, ''))
+      const formatValue = parseFloat(innerValue.replace(/,/g, ''))
         .toLocaleString('en-US', {style: 'decimal', maximumFractionDigits: 4, minimumFractionDigits: 0});
-      this.inputElement.nativeElement._value = valueFormated;
-      this.value = valueFormated;
-      this.onChange(valueFormated);
+      this.inputElement.nativeElement.value = formatValue;
+      this.value = formatValue;
+      this.onChange(formatValue);
     }
   }
-
 }
