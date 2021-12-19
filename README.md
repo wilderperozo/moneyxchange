@@ -1,6 +1,11 @@
 # Money Exchange
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0 and is a project to completing the exam of the Belatrix company, with this project we want to emulate how can work a money exchange. 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0 and is a project to completing the exam of the Belatrix company, with this project 
+we want to emulate how can work a money exchange. 
+
+## Installation
+
+Run `npm install` to install npm dependencies.
 
 ## Development server
 
